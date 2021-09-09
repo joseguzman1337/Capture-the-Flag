@@ -12,7 +12,7 @@ Both applications run as they are but you are free to modify as you see fit for 
 
 # Evaluation rules
 - We expect:
-    - An infrastructure as code solution that would implement the necessary resources for this app to work, AWS is preferred but not mandatory
+    - An infrastructure as code, container based solution that would implement the necessary resources for this app to work, AWS oriented is preferred but not mandatory
     - CI/CD pipeline proposition, coded is prefered (no matter the CI/CD platform of choice)
 - Your solution must scale
 - Meaningful git commits, we'd like to see how you got to the final solution presented
