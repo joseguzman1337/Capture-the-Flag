@@ -1,6 +1,6 @@
-# Welcome to DevSecOps/Engineering assessment
+# Welcome to Capture-the-Flag DevSecOps/Engineering challenge
 
-Hello! Welcome to this assessment, in this challenge, we'll provide an application, and we'd like you to propose and implement the best solution for its secure deployment.
+Welcome, in this challenge, we'll provide an application, and we'd like you to propose and implement the best solution for its secure deployment.
 
 ### **We'd like to see your work experience and secure coding skills, so please update this repo with Your proposed solution**
 
