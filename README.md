@@ -20,7 +20,7 @@ The application depends on:
     - Meaningful git commits; we'd like to see how you got to the final solution presented by sending the PRs to this repo.
     - Your solution must scale and be highly secure, clearing all the alerts in Security Tab.
     - Update the README file with information on the solution and how to operate it.
-    - Create the Package and the Release.
+    - Create the Release and the Package.
 
 # Extra points for:
 
