@@ -1,5 +1,5 @@
-# Use Python 3.11.5-slim as the base image
-FROM python:3.11.5-slim
+# Use the latest slim Python image as the base image
+FROM python:slim
 
 # Set the environment variable to not buffer Python outputs
 ENV PYTHONUNBUFFERED 1
