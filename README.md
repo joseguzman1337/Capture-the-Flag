@@ -19,8 +19,8 @@ Both applications run as they are, but you are free to modify them as you see fi
 - Update the README file with information on the solution and how to operate it.
 
 # Extra points for:
-- a fully working hosted version of your solution
-- Horizontal auto-scaling solution proposition
+- A fully working hosted version of your solution.
+- Horizontal auto-scaling solution proposition.
 - How would you make sure this application won't fail during high loads and/or traffic?
 - How would you design your solution for zero-downtime deployment and scale?
 - Feedback on the applications given.
