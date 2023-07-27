@@ -15,8 +15,8 @@ The application depends on:
   
     - Both applications should run a fully working hosted version of your DevSecOps solution. But you are free to modify them as you see fit for the solution you wish to propose.
     - Use infrastructure as code IaC, a container-based solution that would implement the necessary resources for this app to work; AWS oriented is preferred but not mandatory.
-    - Add all the missing GitHub Workflows and add badges to this README file for each GitHub workflow to identify the smell of Your code.
-    - CI/CD pipeline proposition, Using the last version of each component ever instead of pinning a specific version when possible.
+    - Add all the missing GitHub Workflows, fix the existing ones, and add to each one their badges inside of this README file to identify the smell of Your code.
+    - CI/CD pipeline proposition, using the last version of each component ever instead of pinning a specific version when possible.
     - Meaningful git commits; we'd like to see how you got to the final solution presented by sending the PRs to this repo.
     - Your solution must scale and be highly secure, clearing all the alerts in Security Tab.
     - Update the README file with information on the solution and how to operate it.
