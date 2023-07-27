@@ -2,7 +2,7 @@
 
 Welcome, in this challenge, we'll provide an application, and we'd like you to propose and implement the best solution for its secure deployment.
 
-### **We'd like to see your work experience and secure coding skills, so please update this repo with Your proposed solution**
+### **We'd like to see your work experience and secure coding skills to find flags, so please update this repo with Your proposed solution**
 
 The application depends on:
 - A Client Side Render Frontend [repo here](https://github.com/4k4xs4pH1r3/DevSecOps/tree/master/Frontend)
