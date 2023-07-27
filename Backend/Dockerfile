@@ -1,19 +1,27 @@
-FROM python:3.11.4-slim
+# Use Python 3.11.5-slim as the base image
+FROM python:3.11.5-slim
 
+# Set the environment variable to not buffer Python outputs
 ENV PYTHONUNBUFFERED 1
 
+# Set an argument for the app directory
 ARG APP=/app
 WORKDIR $APP
 VOLUME $APP
 
+# Install system dependencies and clean up apt cache
 RUN apt-get update \
     && apt-get install --no-install-recommends -y \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
+        gcc \
+        && apt-get clean \
+        && rm -rf /var/lib/apt/lists/*
 
+# Copy the requirements.txt file and install Python dependencies
 COPY requirements.txt ./
-RUN pip3 install -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
-CMD [ "./manage.py", "runserver", "0:3000" ]
+# Set the default command to run the Django server
+CMD ["./manage.py", "runserver", "0:3000"]
 
+# Expose the Django server port
 EXPOSE 3000

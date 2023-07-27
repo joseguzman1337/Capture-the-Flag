@@ -32,7 +32,7 @@ name = "go"
 enabled = true
 
   [analyzers.meta]
-  import_root = "github.com/4k4xs4pH1r3/artemisa"
+  import_root = "github.com/4k4xs4pH1r3/DevSecOps/tree/master/Frontend"
   dependencies_vendored = true
 
 [[analyzers]]

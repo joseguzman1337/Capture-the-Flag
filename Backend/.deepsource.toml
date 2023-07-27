@@ -72,7 +72,7 @@ name = "go"
 enabled = true
 
   [analyzers.meta]
-  import_root = "github.com/4k4xs4pH1r3/Backend"
+  import_root = "github.com/4k4xs4pH1r3/DevSecOps/tree/master/Backend"
   dependencies_vendored = true
 
 [[analyzers]]
