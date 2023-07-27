@@ -11,12 +11,13 @@ The application depends on:
 Both applications run as they are, but you are free to modify them as you see fit for the solution you wish to propose.
 
 # Evaluation rules
-- We expect the following:
+- Expectations and Objectives:
     - Use infrastructure as code IaC, a container-based solution that would implement the necessary resources for this app to work; AWS oriented is preferred but not mandatory.
     - CI/CD pipeline proposition, Using the last version of each component ever instead of pinning a specific version when possible.
-- Your solution must scale and be highly secure, clearing the alerts in Security Tab.
-- Meaningful git commits; we'd like to see how you got to the final solution presented by sending the PRs to this repo.
-- Update the README file with information on the solution and how to operate it.
+    - Your solution must scale and be highly secure, clearing all the alerts in Security Tab.
+    - Add all the missing GitHub Workflows and add badges to this README file for each GitHub workflow to identify the smell of Your code.
+    - Meaningful git commits; we'd like to see how you got to the final solution presented by sending the PRs to this repo.
+    - Update the README file with information on the solution and how to operate it.
 
 # Extra points for:
 - A fully working hosted version of your solution.
