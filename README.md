@@ -1,4 +1,4 @@
-# Welcome to Capture-the-Flag DevSecOps/Engineering challenge
+# Welcome to Capture the Flag DevSecOps/Engineering challenge
 
 Welcome, in this challenge, we'll provide an application, and we'd like you to propose and implement the best solution for its secure deployment.
 
