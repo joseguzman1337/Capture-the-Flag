@@ -12,17 +12,17 @@ Both applications run as they are, but you are free to modify them as you see fi
 
 # Evaluation rules
 - We expect the following:
-    - An infrastructure as code, container-based solution that would implement the necessary resources for this app to work, AWS oriented is preferred but not mandatory
-    - CI/CD pipeline proposition, coded is preferred (no matter the CI/CD platform of choice)
-- Your solution must scale
-- Meaningful git commits, we'd like to see how you got to the final solution presented
-- README file with information on the solution and how to operate it.
+    - Use infrastructure as code IaC, a container-based solution that would implement the necessary resources for this app to work; AWS oriented is preferred but not mandatory.
+    - CI/CD pipeline proposition, Using the last version of each component ever instead of pinning a specific version when possible.
+- Your solution must scale and be highly secure, clearing the alerts in Security Tab.
+- Meaningful git commits; we'd like to see how you got to the final solution presented by sending the PRs to this repo.
+- Update the README file with information on the solution and how to operate it.
 
 # Extra points for:
 - a fully working hosted version of your solution
 - Horizontal auto-scaling solution proposition
 - How would you make sure this application won't fail during high loads and/or traffic?
 - How would you design your solution for zero-downtime deployment and scale?
-- Feedback on the applications given
+- Feedback on the applications given.
 
 Best of Luck!
