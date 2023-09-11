@@ -24,7 +24,7 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
       # Install Node.js
       # The OSSAR action is now a JavaScript action, so we need to install Node.js on the runner.
