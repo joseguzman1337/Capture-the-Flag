@@ -30,7 +30,7 @@ jobs:
       # The OSSAR action is now a JavaScript action, so we need to install Node.js on the runner.
       # GitHub hosted runners already have Node.js installed, so this step can be skipped for self-hosted runners.
     - name: Install Node.js
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v4
       with:
         node-version: '16.x'
 
