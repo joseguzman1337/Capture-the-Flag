@@ -37,7 +37,7 @@ jobs:
   rest-api-static-security-testing:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: 42Crunch REST API Static Security Testing
         uses: 42Crunch/api-security-audit-action@374275984e471c3cfb6c7a8788566943035aa75d
