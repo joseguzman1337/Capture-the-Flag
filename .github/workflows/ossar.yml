@@ -23,24 +23,29 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Harden Runner
+      uses: step-security/harden-runner@63c24ba6bd7ba022e95695ff85de572c04a18142 # v2.7.0
+      with:
+        egress-policy: audit
+
     - name: Checkout repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
 
       # Install Node.js
       # The OSSAR action is now a JavaScript action, so we need to install Node.js on the runner.
       # GitHub hosted runners already have Node.js installed, so this step can be skipped for self-hosted runners.
     - name: Install Node.js
-      uses: actions/setup-node@v4
+      uses: actions/setup-node@b39b52d1213e96004bfcb1c61a8a6fa8ab84f3e8 # v4.0.1
       with:
         node-version: '16.x'
 
       # Run open source static analysis tools
     - name: Run OSSAR
-      uses: github/ossar-action@v1
+      uses: github/ossar-action@786a16a90ba92b4ae6228fe7382fb16ef5c51000 # v1
       id: ossar
 
       # Upload results to the Security tab
     - name: Upload OSSAR results
-      uses: github/codeql-action/upload-sarif@v3
+      uses: github/codeql-action/upload-sarif@b7bf0a3ed3ecfa44160715d7c442788f65f0f923 # v3.23.2
       with:
         sarif_file: ${{ steps.ossar.outputs.sarifFile }}
