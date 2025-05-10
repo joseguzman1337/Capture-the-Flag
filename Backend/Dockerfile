@@ -1,5 +1,5 @@
 # Use the latest slim Python image as the base image
-FROM python:slim@sha256:0fc06e43c87b5f5eba5ce9cbc9411bfa1f5ba7f49b1019413203af46f71c0599
+FROM python:slim@sha256:914bf5c12ea40a97a78b2bff97fbdb766cc36ec903bfb4358faf2b74d73b555b
 
 # Set the environment variable to not buffer Python outputs
 ENV PYTHONUNBUFFERED 1
