@@ -35,7 +35,7 @@ jobs:
       # The OSSAR action is now a JavaScript action, so we need to install Node.js on the runner.
       # GitHub hosted runners already have Node.js installed, so this step can be skipped for self-hosted runners.
     - name: Install Node.js
-      uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
+      uses: actions/setup-node@395ad3262231945c25e8478fd5baf05154b1d79f # v6.1.0
       with:
         node-version: '22.x'
 
@@ -46,6 +46,6 @@ jobs:
 
       # Upload results to the Security tab
     - name: Upload OSSAR results
-      uses: github/codeql-action/upload-sarif@45c373516f557556c15d420e3f5e0aa3d64366bc # v3.31.9
+      uses: github/codeql-action/upload-sarif@5d4e8d1aca955e8d8589aabd499c5cae939e33c7 # v4.31.9
       with:
         sarif_file: ${{ steps.ossar.outputs.sarifFile }}
