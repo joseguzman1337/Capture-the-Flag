@@ -76,6 +76,7 @@
     "ajv": ">=8.18.0",
     "@tootallnate/once": ">=3.0.1",
     "webpack-dev-server": ">=5.2.1",
+    "body-parser": ">=1.20.6",
     "resolve-url-loader": {
       "postcss": ">=8.4.31"
     }
