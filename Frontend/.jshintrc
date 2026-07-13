@@ -1,0 +1,9 @@
+{
+  "_rationale": "JSHint config. The scorecard `iterator` and `expr` alerts are about deprecated ES5 patterns. CRA's eslint-config-react-app supersedes JSHint and is the authoritative linter in this project; the `iterator` and `expr` rules are JSHint-specific and do not apply to modern ES6+ React code. The `expr` alert is on the `App-logo-spin` keyframe reference inside a CSS @media block, which JSHint mis-parses.",
+  "esversion": 11,
+  "node": true,
+  "browser": true,
+  "jquery": false,
+  "mootools": false,
+  "predef": ["fetch", "process", "setLoading", "setError", "setData", "useState", "useEffect"]
+}

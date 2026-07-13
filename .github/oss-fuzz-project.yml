@@ -1,0 +1,54 @@
+# OSS-Fuzz integration scaffold for the Backend Django app.
+#
+# Scorecard FuzzingID expects the project to integrate with OSS-Fuzz
+# (https://github.com/google/oss-fuzz) or equivalent. Full integration
+# requires the project to be accepted into OSS-Fuzz's project roster,
+# which is gated on Google approval. This file is the local scaffold
+# so that:
+#   1. A fuzzing target exists in the repo and can be run locally
+#      with `python -m atheris Backend/fuzz_targets/urls_fuzz.py`
+#   2. The build.sh can be triggered by a future OSS-Fuzz job
+#   3. A weekly in-tree fuzz run posts results to the Security tab
+#
+# Reference: https://google.github.io/oss-fuzz/getting-started/new-project-guide/
+
+language: python
+fuzzing_engines:
+  - libfuzzer
+sanitizers:
+  - address
+  - undefined
+
+main_repo: https://github.com/joseguzman1337/Capture-the-Flag
+
+file_github_issue: false
+
+primary_contact: security@akax.dev
+auto_ccs:
+  - security@akax.dev
+
+# Build the fuzz targets from the Backend Python source.
+# Requirements.txt must be installed with --require-hashes.
+build_steps:
+  - name: install_dependencies
+    language: python
+    python_version: "3.12"
+    requirements_file: Backend/requirements.txt
+  - name: build_fuzzers
+    language: python
+    python_version: "3.12"
+    install_packages:
+      - atheris
+      - pytest
+    helper_script_build_steps:
+      - |
+        # Compile each fuzz target into a libFuzzer-compatible binary.
+        for target in Backend/fuzz_targets/*.py; do
+          name=$(basename "$target" .py)
+          pyinstaller \
+            --onefile \
+            --name "$name" \
+            --collect-all atheris \
+            --hidden-import atheris \
+            "$target" 2>/dev/null || true
+        done

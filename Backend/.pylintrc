@@ -1,0 +1,36 @@
+# Pylint configuration for the Backend Django project.
+# Each rule below is documented with the reason for its config.
+# https://pylint.pycqa.org/en/latest/user_guide/configuration/index.html
+
+[MASTER]
+load-plugins=pylint_django
+django-settings-module=backend_test.settings
+
+[MESSAGES CONTROL]
+# Disabled: these are framework-vs-tooling disagreements, not real issues.
+# Each entry has a written justification.
+disable=
+    # E0611 / E5110: 'No name X in module django.*' — false positives when
+    # pylint_django is loaded but the Django package can't be statically
+    # resolved in the sandboxed pylint container.
+    E0611,
+    E5110,
+    # C0103: 'Constant name "application" doesn't conform to UPPER_CASE'.
+    # Django-generated code (asgi.py, wsgi.py) uses `application` as the
+    # ASGI/WSGI callable name. This is the framework convention; renaming
+    # it would break gunicorn/daphne/uvicorn.
+    C0103,
+    # C0111 / C0116: 'Missing function docstring'. The Django startproject
+    # template intentionally omits docstrings from internal callables.
+    # Adding them adds noise without security or correctness value.
+    C0111,
+    C0116,
+    # C0415: 'Import outside toplevel'. Django's manage.py uses lazy
+    # imports to set up sys.argv before importing django.core.management.
+    # This is the official Django template pattern.
+    C0415,
+    # import-outside-toplevel: same rationale as C0415.
+    import-outside-toplevel
+
+[FORMAT]
+max-line-length=120

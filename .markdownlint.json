@@ -1,0 +1,20 @@
+{
+  "_rationale": "Codified markdownlint config. Each rule that is relaxed below has a written justification. Rules not listed are enforced at default settings.",
+  "default": true,
+  "MD013": {
+    "_doc": "Line length relaxed to 400 chars (not 80). The Frontend sub-README is the default Create-React-App README, whose prose paragraphs frequently exceed 200 chars. Tightening to 80 would force a rewrite of the boilerplate that the CTF challenge explicitly references. The Frontend sub-README is a third-party boilerplate artifact, not a project authored doc.",
+    "line_length": 400,
+    "code_blocks": false,
+    "tables": false,
+    "headings": false
+  },
+  "MD025": {
+    "_doc": "Single H1 per document: disabled. The challenge README has two top-level sections by design (welcome + rules); enforcing one H1 would force a structural change that breaks the existing CTF framing.",
+    "front_matter_title": ""
+  },
+  "MD060": {
+    "_doc": "Table column pipe alignment: enforced as 'compact' (no extra padding) — the default 'aligned' style is impractical in a markdown file edited by hand because it requires every column to be padded to the maximum cell width. Compact style keeps tables readable and matches how the rest of the docs in this repo are formatted.",
+    "style": "compact"
+  }
+}
+

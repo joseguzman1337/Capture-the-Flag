@@ -1,0 +1,26 @@
+# CODEOWNERS — required reviewers per path.
+# Required for branch protection and addressed under Scorecard CITestsID
+# (PRs touching these areas get a required-review check).
+# https://docs.github.com/en/repositories/creating-and-managing-repositories/about-code-owners
+
+# Default: maintainer (most-general)
+*                       @joseguzman1337
+
+# Workflows and security tooling: maintainer only
+/.github/               @joseguzman1337
+/SECURITY.md            @joseguzman1337
+/LICENSE                @joseguzman1337
+
+# Backend Python changes
+/Backend/               @joseguzman1337
+/Backend/Dockerfile     @joseguzman1337
+/Backend/requirements.in @joseguzman1337
+/Backend/requirements.txt @joseguzman1337
+/Backend/fuzz_targets/  @joseguzman1337
+
+# Frontend JS/CSS changes
+/Frontend/              @joseguzman1337
+
+# Terraform / IaC
+/**/*.tf                @joseguzman1337
+/**/*.tfvars            @joseguzman1337

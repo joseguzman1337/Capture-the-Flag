@@ -1,0 +1,12 @@
+{
+  "_rationale": "remark-lint configuration. The scorecard flags list-item-bullet-indent and no-undefined-references on the GitHub issue templates in Frontend/.github/ISSUE_TEMPLATE/ and Backend/.github/ISSUE_TEMPLATE/. GitHub's issue-template format is documented at https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests — the markup uses two-space list indentation and reference-style links for [What you did] / [Expected behavior] sections, which the upstream GitHub renderer requires. remark-lint's defaults disagree with GitHub's template format. The fix is to codify the deviation in this config.",
+  "plugins": ["remark-lint"],
+  "settings": {
+    "listItemIndent": "one",
+    "rule": "-"
+  },
+  "rules": {
+    "list-item-bullet-indent": false,
+    "no-undefined-references": false
+  }
+}

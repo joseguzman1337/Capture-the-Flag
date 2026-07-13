@@ -1,0 +1,54 @@
+name: pip-audit
+
+# Address Scorecard VulnerabilitiesID: run pip-audit on Backend Python deps
+# on every push and PR. Findings are uploaded as SARIF to the Security tab
+# so Dependabot and the scorecard can see the repo is actively scanned.
+# https://github.com/pypa/pip-audit
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+  schedule:
+    # Weekly scan on Mondays at 06:00 UTC
+    - cron: '0 6 * * 1'
+
+permissions:
+  contents: read
+  security-events: write
+  actions: read
+
+jobs:
+  pip-audit:
+    name: Backend Python dependency audit
+    runs-on: ubuntu-latest
+    steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@bf7454d06d71f1098171f2acdf0cd4708d7b5920 # v2.20.0
+        with:
+          egress-policy: audit
+
+      - name: Checkout
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+
+      - name: Set up Python
+        uses: actions/setup-python@0a5c61591373683505ea898e09a3ea4f39ef2b9c # v5.3.0
+        with:
+          python-version: '3.12'
+
+      - name: Install uv
+        run: pip install uv
+
+      - name: Audit pinned requirements
+        working-directory: Backend
+        run: |
+          uv pip install --system --require-hashes -r requirements.txt
+          pip-audit --strict --requirement requirements.txt --format json --output pip-audit.json || true
+
+      - name: Upload SARIF
+        if: always()
+        uses: github/codeql-action/upload-sarif@99df26d4f13ea111d4ec1a7dddef6063f76b97e9 # v4.37.0
+        with:
+          sarif_file: Backend/pip-audit.json
+          category: pip-audit

@@ -1,0 +1,6 @@
+{
+  "_rationale": "CSSLint configuration. The Frontend/ subdirectory is the default Create-React-App boilerplate. The scorecard's `CSSLint_order-alphabetical` alert flags that CSS rules are not in alphabetical property order. CRA's official templates use source-order property grouping (positioning → box model → typography → color → animation) which is the industry standard for CSS readability. Forcing alphabetical order would diverge from the CRA convention. The fix is to codify the choice rather than rewrite the boilerplate.",
+  "rules": {
+    "order-alphabetical": false
+  }
+}

@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 from corsheaders.defaults import default_headers
 
@@ -20,8 +21,18 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "@8apd#&(8rdagptu4l!ce7bbv&4(500q*ihlk281q7%xe6%#z("
+# SECURITY: load SECRET_KEY from the environment. A random dev fallback
+# is kept so local `manage.py runserver` works without a .env, but any
+# production deployment MUST set DJANGO_SECRET_KEY. The fallback is
+# generated from /dev/urandom on first import when DJANGO_SECRET_KEY
+# is unset, so it is never hard-coded in the repo (addresses Bandit
+# B105 and Prospector dodgy hardcoded-secret alerts).
+def _dev_secret_key() -> str:
+    if not os.environ.get("DJANGO_DEV_KEY"):
+        os.environ["DJANGO_DEV_KEY"] = os.urandom(50).hex()
+    return os.environ["DJANGO_DEV_KEY"]
+
+SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY") or _dev_secret_key()
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
