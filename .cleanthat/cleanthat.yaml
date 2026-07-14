@@ -1,0 +1,48 @@
+# Capture-the-Flag — Cleanthat configuration
+#
+# PURPOSE
+# -------
+# The Cleanthat GitHub App (solven-eu/cleanthat) is a third-party App whose
+# check runs were repeatedly getting stuck in `in_progress` on this repo
+# (see PR #1231, #1232, check_run_id 86990436443). The check is not a GitHub
+# Actions job — the App creates it via the Checks API from its own backend —
+# so it cannot be routed to a self-hosted runner.
+#
+# This config disables Cleanthat for THIS repository by excluding every
+# head ref from its processing. Verified from upstream source:
+#   github/src/main/java/eu/solven/cleanthat/code_provider/github/refs/GithubRefCleaner.java
+#     selectPatternOfSensibleHead()  ->  Pattern.matches(regex, fullRef)
+#     prepareRefToClean()           ->  if head matches excluded_patterns
+#                                          return Optional.empty()   // NO check run
+# Patterns are matched against `refs/heads/<branch>` using Java
+# java.util.regex.Pattern.matches (fully anchored), so `refs/heads/.*`
+# matches every branch ref and the App short-circuits before creating
+# any `Cleanthat` check run.
+#
+# To re-enable Cleanthat for selected branches in the future, replace
+# `refs/heads/.*` with the actual refs you want excluded, e.g.
+#     excluded_patterns:
+#       - "refs/heads/release/.*"
+
+syntax_version: "2023-01-09"
+
+meta:
+  # Don't even let Cleanthat open auto-clean PRs against our branches
+  can_edit_not_protected_branches: false
+  # Disable the "rewrite the whole repo on config change" behavior
+  full_clean_on_configuration_change: false
+  refs:
+    # Exclude every branch head ref from Cleanthat processing.
+    # With this set, `prepareRefToClean` returns Optional.empty()
+    # BEFORE the App calls `createCheckRun` — so no check run is
+    # ever emitted for this repository.
+    excluded_patterns:
+      - "refs/heads/.*"
+    # Also clear the default protected set so `canCleanInPlace` /
+    # `canCleanInNewRR` cannot route around the excluded check.
+    protected_patterns: []
+
+# No engines — even if a future change re-enables processing, there
+# is nothing for Cleanthat to run, and the no-op path returns
+# Optional.empty() before any check run is created.
+engines: []
