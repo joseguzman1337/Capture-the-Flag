@@ -1,0 +1,11 @@
+syntax_version: "2023-01-14"
+encoding: "UTF-8"
+line_ending: "GIT_ATTRIBUTES"
+formatters:
+  - format: "json"
+    includes:
+      - "**/*.json"
+    steps:
+      - id: "jackson"
+        parameters:
+          space_before_separator: true
